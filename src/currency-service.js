@@ -6,7 +6,7 @@ export default class CurrencyService {
       if (!response.ok) {
         const errorMessage = `${response.status} ${response.statusText}
         ${jsonifiedResponse.message}`;
-        throw new Error(errorMessage);
+        throw new Error(errorMessage, country);
       }
       return jsonifiedResponse;
     } catch(error) {

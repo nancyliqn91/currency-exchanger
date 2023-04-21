@@ -3,26 +3,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyService from './currency-service';
 
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 // Business Logic
 
 async function getCurrency(country) {
   const response = await CurrencyService.getCurrency(country);
   if (response.main) {
-    printElements(response, country);
+    printElements(response);
   } else {
-    printError(response, country);
+    printError(response);
   }
 }
 
 // UI Logic
 
-function printElements(response, country) {
-  document.querySelector('#showResponse').innerText = `The currency in ${country} is ${response[conversion_rates].[${country}]}
+function printElements(response) {
+  document.querySelector('#showResponse').innerText = `The currency is ${response['conversion_rates'].country}
   `;
 }
 
-function printError(error, country) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the currency data for ${country}: 
+function printError(error) {
+  document.querySelector('#showResponse').innerText = `There was an error accessing the currency data: 
   ${error}.`;
 }
 
