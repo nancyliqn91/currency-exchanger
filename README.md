@@ -1,8 +1,8 @@
-# Project Name
+# currency-exchanger
 
 #### By _Qian Li_ 😊
 
-#### This is my project which demonstrates uses of test-driven development, understanding of constructors and prototypes. 
+#### This is my project which demonstrates uses of asynchrony and APIs. 
 
 ## Technologies Used
 
@@ -26,35 +26,24 @@
 
 ## Description
 
-It will serve as a website for xxxxxxx.
+It will serve as a website to create a currency exchange application. A user should be able to type in an amount (in U.S. dollars) and then choose which currency it should be converted to (such as CAD, CNY, JPYand so on).
 
 ## Setup/Installation Requirements
 
-* Clone the project from Github to the local desktop.
-* Open the project folder(project name).
-* Installing all packages with $ npm install.
-* Building the project using webpack with $ npm run build.
-* Starting a development server with $ npm run start.
-* Linting JS files in the src folder with $ npm run lint.
-* Running tests with Jest using $ npm run test.
+* _Clone “currency-exchanger“ from the repository to your desktop_
+* _Navigate to "currency-exchanger" directory via your local terminal command line_
+* _Open the directory in VS code by typing 'code .' in the command line_
+* _Add .env file to root of directory to store API key by typing "touch .env"_
+* _Get an API key* by creating an account on https://www.exchangerate-api.com/_
+* _Copy API key and store in .env file using the variable "API-KEY"_
+* _Run 'npm install' in the command line to install all packages_
+* _Run 'npm run build' to build the project via webpack_
+* _Run 'npm run lint' to lint all JS files_
+* _Run 'npm run test' to test files via Jest_
+* _Run 'npm run start' to start a development server_
 
-## Tests
-```
-Describe: Function()
-
-  Test: "It should return a xx object with xx"
-  Code: 
-  const xx = new xx();
-  Expected Output: xx
-
-Describe: xx.prototype.addPrice()
-
-  test: "It should return xx of xx from xx."
-  Code:
-  xx.prototype.addPrice(xx)
-  Expected Output: xx
-  
-```
+_* API key will be a unique combination of numbers and letters, allowing full access to application_
+_* API key MUST be stored in variable "API-KEY" within .env file - example: API-KEY=3dedc43fe425992c27b353e950b9e942_
 
 ## Known Bugs
 
