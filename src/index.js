@@ -5,20 +5,25 @@ import CurrencyService from './currency-service';
 
 // Business Logic
 
-async function getCurrency(country) {
-  const response = await CurrencyService.getCurrency(country);
-  if (response.country) {
-    printElements(response, country);
+async function getCurrency() {
+  const response = await CurrencyService.getCurrency();
+  if (response) {
+    printElements(response);
   } else {
-    printError(response, country);
+    printError(response['error-type']);
   }
 }
 
 // UI Logic
 
-function printElements(response, country) {
-  document.querySelector('#showResponse').innerText = `The currency is ${response['conversion_rates'].country}
+function printElements(response) {
+  console.log(response);
+  const countrySelect = document.querySelector('#country');
+  const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
+  console.log(selectedCountry);
+  document.querySelector('#showResponse').innerText = `The currency is ${response['conversion_rates'][selectedCountry]}
   `;
+  // countrySelect.value = null;
 }
 
 function printError(error) {
@@ -28,11 +33,7 @@ function printError(error) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const countrySelect = document.querySelector('#country');
-  const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
-  console.log(selectedCountry);
-  countrySelect.value = null;
-  getCurrency(selectedCountry);
+  getCurrency();
 }
 
 // not loadend
