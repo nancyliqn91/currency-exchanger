@@ -25,6 +25,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(gif|png|avif|jpe?g)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
