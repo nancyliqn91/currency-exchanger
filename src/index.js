@@ -4,7 +4,6 @@ import './css/styles.css';
 import CurrencyService from './currency-service';
 
 // Business Logic
-
 async function getCurrency() {
   const response = await CurrencyService.getCurrency();
   if (response) {
@@ -15,16 +14,15 @@ async function getCurrency() {
 }
 
 // UI Logic
-
 function printElements(response) {
   const enteredAmount = parseFloat(document.getElementById('usd').value);
 
-  const customInput = document.getElementById('#custom').value.toUpperCase();
-  console.log(customInput);
+  const customInput = document.getElementById('custom').value.toUpperCase();
+  // console.log(customInput);
 
   const countrySelect = document.querySelector('#country');
   const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
-  console.log(selectedCountry);
+  // console.log(selectedCountry);
 
   if (customInput != undefined) {
     let currencyObj = response['conversion_rates'];
