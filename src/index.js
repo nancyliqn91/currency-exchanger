@@ -19,11 +19,15 @@ async function getCurrency() {
 function printElements(response) {
   const countrySelect = document.querySelector('#country');
   const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
+  console.log();
   const enteredAmount = parseFloat(document.getElementById('usd').value);
-  const currency = parseFloat(response['conversion_rates'][selectedCountry]);
+  // console.log(enteredAmount);
+  // const currency = parseFloat(response['conversion_rates'][selectedCountry]);
+  if ()
+  const currency = response['conversion_rates'][selectedCountry];
+  console.log(currency);
   const money = parseInt(enteredAmount * currency * 1000) /1000;
   document.querySelector('#showResponse').innerText = `The currency is ${currency}, the money is ${money}.`;
-  // countrySelect.value = null;
 }
 
 function printError(error) {
@@ -34,6 +38,7 @@ function printError(error) {
 function handleFormSubmission(event) {
   event.preventDefault();
   getCurrency();
+  // countrySelect.value = null;
 }
 
 // not loadend

@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Currency Exchanger</title>
+  <title>Currency Exchange Calculator</title>
 </head>
 <body>
   <div class="container"></div>
   <h1>Get Currency!</h1>
-  <p>To get the current $<b>usd</b> currency, please enter the amount to get started:</p>
+  <p>To get the current $<b>usd</b> currency, please enter the amount you want to be calculated:</p>
     <form>
       <label for="usd">Enter the amount:</label>
       <input id="usd" type="number">
       <br>
       <label for="country">Choose a country:</label>
       <select id="country">
-        <option value="CAD" selected="selected">CAD</option>
-        <option value="AED">AED</option>
-        <option value="AFN">AFN</option>
-        <option value="EUR">EUR</option>
-        <option value="JPY">JPY</option>
+        <!-- <option value="CAD" selected="selected">Canada</option> -->
+        <option value="CAD">Canada</option>
+        <option value="AED">United Arab Emirates</option>
+        <option value="CNY">China</option>
+        <option value="EUR">EU countries</option>
+        <option value="JPY">Japan</option>
       </select>
+      <br>
+      <label for="custom">Or enter a currency you like, here are the examples: </label>
+      <br>
+      <pre>
+        AUD
+        BGN
+        CHF
+      </pre>
+      <input id="cumtom" type="text" name="custom">
       <br>
       <button type="submit">Submit</button>
       <p id="showResponse"></p>
