@@ -10,19 +10,19 @@ async function getCurrency() {
   if (response) {
     printElements(response);
   } else {
-    printError(response['error-type']);
+    printError(response);
   }
 }
 
 // UI Logic
 
 function printElements(response) {
-  console.log(response);
   const countrySelect = document.querySelector('#country');
   const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
-  console.log(selectedCountry);
-  document.querySelector('#showResponse').innerText = `The currency is ${response['conversion_rates'][selectedCountry]}
-  `;
+  const enteredAmount = parseFloat(document.getElementById('usd').value);
+  const currency = parseFloat(response['conversion_rates'][selectedCountry]);
+  const money = parseInt(enteredAmount * currency * 1000) /1000;
+  document.querySelector('#showResponse').innerText = `The currency is ${currency}, the money is ${money}.`;
   // countrySelect.value = null;
 }
 
