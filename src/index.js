@@ -3,23 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyService from './currency-service';
 
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
 // Business Logic
 
 async function getCurrency(country) {
@@ -46,6 +29,7 @@ function printError(error) {
 function handleFormSubmission(event) {
   event.preventDefault();
   const country = document.getElementById('#country').value;
+  console.log(country);
   document.getElementById('#country').value = null;
   getCurrency(country);
 }
