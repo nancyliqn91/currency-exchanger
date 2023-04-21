@@ -7,16 +7,16 @@ import CurrencyService from './currency-service';
 
 async function getCurrency(country) {
   const response = await CurrencyService.getCurrency(country);
-  if (response.main) {
-    printElements(response);
+  if (response.country) {
+    printElements(response, country);
   } else {
-    printError(response);
+    printError(response, country);
   }
 }
 
 // UI Logic
 
-function printElements(response) {
+function printElements(response, country) {
   document.querySelector('#showResponse').innerText = `The currency is ${response['conversion_rates'].country}
   `;
 }
