@@ -1,19 +1,16 @@
-export default class Triangle {
-  constructor(side1, side2, side3) {
-    this.side1 = side1;
-    this.side2 = side2;
-    this.side3 = side3;
-  }
-
-  checkType() {
-    if ((this.side1 > (this.side2 + this.side3)) || (this.side2 > (this.side1 + this.side3)) || (this.side3 > (this.side1 + this.side2))) {
-      return "not a triangle";
-    } else if ((this.side1 !== this.side2) && ((this.side1 !== this.side3)) && ((this.side2 !== this.side3))) {
-      return "scalene triangle";
-    }  else if ((this.side1 === this.side2) && (this.side1 === this.side3)) {
-      return "equilateral triangle";
-    } else {
-      return "isosceles triangle";
+export default class CurrencyService {  
+  static async getCurrency(country) {
+    try {
+      const response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`);
+      const jsonifiedResponse = await response.json();
+      if (!response.ok) {
+        const errorMessage = `${response.status} ${response.statusText}
+        ${jsonifiedResponse.message}`;
+        throw new Error(errorMessage);
+      }
+      return jsonifiedResponse;
+    } catch(error) {
+      return error;
     }
-  }    
+  }
 }
