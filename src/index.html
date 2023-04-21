@@ -11,9 +11,16 @@
       <label for="usd">Enter an amount:</label>
       <input id="usd" type="number">
       <br>
-      Countrys: <select name="country" id="country">
-      <option value="" selected="selected">Select country</option>
-      </select>
+      <div class="dropdown">
+        <p onclick="myFunction()" class="dropbtn">Choose a country</p>
+        <div id="country" class="dropdown-content">
+          <li>AED</li>
+          <li>AFN</li>
+          <li>CAD</li>
+          <li>EUR</li>
+          <li>JPY</li>
+        </div>
+      </div>
       <br>
       <button type="submit">Submit</button>
       <p id="showResponse"></p>

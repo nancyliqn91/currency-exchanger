@@ -6,7 +6,7 @@ import CurrencyService from './currency-service';
 // Business Logic
 
 async function getCurrency(country) {
-  const response = await CurrencyService.getCurrency(city);
+  const response = await CurrencyService.getCurrency(country);
   if (response.main) {
     printElements(response, country);
   } else {
@@ -17,7 +17,7 @@ async function getCurrency(country) {
 // UI Logic
 
 function printElements(response, country) {
-  document.querySelector('#showResponse').innerText = `The currency in ${country} is ${response.main.}.
+  document.querySelector('#showResponse').innerText = `The currency in ${country} is ${response[conversion_rates].[${country}]}
   `;
 }
 
@@ -28,8 +28,8 @@ function printError(error, country) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const country = document.querySelector('#country').value;
-  document.querySelector('#country').value = null;
+  const country = document.getElementById('#country').value;
+  document.getElementById('#country').value = null;
   getCurrency(country);
 }
 
