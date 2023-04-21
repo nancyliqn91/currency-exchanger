@@ -28,10 +28,11 @@ function printError(error) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const country = document.getElementById('#country').value;
-  console.log(country);
-  document.getElementById('#country').value = null;
-  getCurrency(country);
+  const countrySelect = document.querySelector('#country');
+  const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
+  console.log(selectedCountry);
+  countrySelect.value = null;
+  getCurrency(selectedCountry);
 }
 
 // not loadend
