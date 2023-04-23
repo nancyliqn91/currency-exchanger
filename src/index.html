@@ -12,28 +12,32 @@
       <input id="usd" type="number">
       
       <br>
-      <label for="custom">You can enter a currency you like, here are the examples: </label>
+      <label for="custom">You can enter a currency below, here are the examples: </label>
       <br>
       <pre>
         AUD
         BGN
         CHF
       </pre>
-      <input id="cumtom" type="text" name="custom">
+      <input id="custom" type="text" name="custom">
       <br>
 
-      <label for="country">Or choose a country:</label>
+      <p>Or choose a country:</p>
       <select id="country">
-        <option value="CAD" selected="">Canada</option>
+        <option disabled selected value="">Select a country</option>
+        <option value="CAD">Canada</option>
         <option value="AED">United Arab Emirates</option>
         <option value="CNY">China</option>
         <option value="EUR">EU countries</option>
         <option value="JPY">Japan</option>
       </select>
-     
       <br>
-      <button type="submit">Submit</button>
+      <br>
+      <button type="submit">Transfer</button>
+      <br>
+      <p>Here is the result:</p>
       <p id="showResponse"></p>
+      <p id="showResponse2"></p>
       <p id="currencyResponse"></p>
     </form>
   </div>

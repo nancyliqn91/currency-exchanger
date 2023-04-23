@@ -15,32 +15,42 @@ async function getCurrency() {
 
 // UI Logic
 function printElements(response) {
-  const enteredAmount = parseFloat(document.getElementById('usd').value);
+  const enteredAmount = parseInt(document.getElementById('usd').value);
 
-  const customInput = document.getElementById('custom').value.toUpperCase();
-  // console.log(customInput);
+  let customInput;
+  if (document.getElementById('custom') != null) {
+    customInput = document.getElementById('custom').value.trim();
+    customInput = customInput !== '' ? customInput.toUpperCase() : undefined;
+  } else {
+    customInput = undefined;
+  }
 
   const countrySelect = document.querySelector('#country');
-  const selectedCountry = countrySelect.options[countrySelect.selectedIndex].text;
-  // console.log(selectedCountry);
+  let selectedCountry;
+  let inputCountry;
+  if (countrySelect.selectedIndex !== 0) {
+    selectedCountry = countrySelect.options[countrySelect.selectedIndex].value;
+    inputCountry = countrySelect.options[countrySelect.selectedIndex].text;
+  }
 
-  if (customInput != undefined) {
-    let currencyObj = response['conversion_rates'];
-    if (Object.prototype.hasOwnProperty.call(currencyObj, customInput)) { 
-      const enteredAmount = parseFloat(document.getElementById('usd').value);
+  if (customInput !== undefined && customInput !== '') {
+    if (Object.prototype.hasOwnProperty.call(response['conversion_rates'], customInput)) {
       const customCurrency = response['conversion_rates'][customInput];
-
-      const money = parseInt(enteredAmount * customCurrency * 1000) /1000;
-      document.querySelector('#showResponse').innerText = `The currency is ${customCurrency}, the money is ${money}.`;
+      const money = parseInt(enteredAmount * customCurrency * 1000) / 1000;
+      document.querySelector('#showResponse').innerText = `The currency in ${customInput} is ${customCurrency}, the money is ${money}.`;
     } else {
       printCurrencyError(customInput);
     }
+  } else {
+    document.querySelector('#showResponse').innerText = '';
   }
 
-  if (selectedCountry != undefined) {
+  if (countrySelect != undefined && selectedCountry !== undefined) {
     const currency = response['conversion_rates'][selectedCountry];
     const money = parseInt(enteredAmount * currency * 1000) /1000;
-    document.querySelector('#showResponse').innerText = `The currency is ${currency}, the money is ${money}.`;
+    document.querySelector('#showResponse2').innerText = `The currency in ${inputCountry} is ${currency}, the money is ${money}.`;
+  } else {
+    document.querySelector('#showResponse2').innerText = '';
   }
 
 }
@@ -56,9 +66,8 @@ function printCurrencyError(customInput) {
 function handleFormSubmission(event) {
   event.preventDefault();
   getCurrency();
-  // countrySelect.value = null;
 }
 
 window.addEventListener("load", function() {
   document.querySelector('form').addEventListener("submit", handleFormSubmission);
-});
+})
