@@ -6,7 +6,7 @@ import CurrencyService from './currency-service';
 // Business Logic
 async function getCurrency() {
   const response = await CurrencyService.getCurrency();
-  if (response) {
+  if (response.result === "success") {
     printElements(response);
   } else {
     printError(response);
@@ -55,19 +55,27 @@ function printElements(response) {
 
 }
 
-function printError(error) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the currency data: ${error}.`;
+function printError(APIresponse) {
+  document.querySelector('#showResponse').innerText = `There was an error accessing the currency data: ${APIresponse}.`;
 }
 
 function printCurrencyError(customInput) {
   document.querySelector('#currencyResponse').innerText = `There was an error accessing the currency data: ${customInput} in question doesn't exist.`;
 }
 
+function clearResult() {
+  document.querySelector('#showResponse').innerText = '';
+  document.querySelector('#currencyResponse').innerText ='';
+  document.querySelector('#showResponse2').innerText = '';
+}
+
 function handleFormSubmission(event) {
   event.preventDefault();
   getCurrency();
+  clearResult();
 }
 
 window.addEventListener("load", function() {
   document.querySelector('form').addEventListener("submit", handleFormSubmission);
+
 })
